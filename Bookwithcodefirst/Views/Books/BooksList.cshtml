@@ -1,0 +1,31 @@
+﻿@using Bookwithcodefirst.Context;
+@{
+    ViewData["Title"] = "BooksList";
+}
+@model List<Book>
+
+<h1>Books List</h1>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th> Author</th>
+
+    </tr>
+    @foreach(Book b in Model)
+    {
+     <tr>
+         <td>@b.Title</td>
+        <td>@b.Author</td>
+         <td>
+             <a href="/Books/UpdateBook?id=@b.Id"> Edit this book</a>
+         </td>
+         <td>
+             <a href="/Books/DeleteBook?id=@b.Id">Delete this book</a>
+         </td>
+         </tr>
+    }
+
+</table>
+
+<a href="/Books/AddBook?id=@Model[0].Id">Add New Book</a>
